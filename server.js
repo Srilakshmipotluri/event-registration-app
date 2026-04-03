@@ -1,6 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
 
@@ -12,25 +12,24 @@ app.use(bodyParser.json());
 let users = [];
 
 // Route for registration
-app.post('/register', (req, res) => {
-    const { name, email, phone, event } = req.body;
+app.post("/register", (req, res) => {
+  const { name, email, phone, event } = req.body;
 
-    if (!name || !email || !phone || !event) {
-        return res.json({ message: "All fields are required!" });
-    }
+  if (!name || !email || !phone || !event) {
+    return res.json({ message: "All fields are required!" });
+  }
 
-    users.push({ name, email, phone, event });
+  users.push({ name, email, phone, event });
 
-    console.log("Registered Users:", users);
+  console.log("Registered Users:", users);
 
-    res.json({ message: "Registration Successful!" });
+  res.json({ message: "Registration Successful!" });
 });
 
 // Start server
-app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
-app.get('/', (req, res) => {
-    res.send("Server is running successfully!");
-res.send("CI/CD Working!");
-});
+app.listen(5000, () => {
+  // console.log("Server running on http://localhost:3000");
+  app.get("/", (req, res) => {
+    res.send("Hello!");
+  });
 });
